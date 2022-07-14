@@ -1,10 +1,11 @@
 # flask-python-app
 
 ## Pre-requisites
+```
 Docker
 Docker-compose
 Git
-
+```
 ### Clone the repository
 ```
 git clone https://github.com/rajshivage/flask-python-app.git
