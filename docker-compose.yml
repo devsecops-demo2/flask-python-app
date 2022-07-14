@@ -6,6 +6,8 @@ services:
    context: .
   ports:
   - 5000:5000
+  environment:
+  - DB_PASSWORD=${DB_PASSWORD}
   volumes:
   - ./app:/app
 
@@ -14,7 +16,7 @@ services:
   ports:
   - 3306:3306
   environment:
-  - MYSQL_ROOT_PASSWORD=p@ssw0rd1
+  - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
   volumes:
   - mysql:/var/lib/mysql
   - mysql_config:/etc/mysql
