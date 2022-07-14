@@ -1,5 +1,11 @@
 # flask-python-app
 
+## Purpose
+```
+Develop simple app using Flask Python framework
+Dockerize or containerize Python app
+Use docker-compose to build and deploy Python app
+```
 ## Pre-requisites
 ```
 Docker
