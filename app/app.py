@@ -39,7 +39,7 @@ def capitalize(word):
 
 @app.route('/users/<int:user_id>/')
 def greet_user(user_id):
-    users = ['Raj', 'Piyu', 'Aarohi']
+    users = ['Raj', 'John', 'Mike']
     try:
         return '<h2>Hi {}</h2>'.format(users[user_id])
     except IndexError:
@@ -55,7 +55,7 @@ def get_widgets():
     )
     cursor = mydb.cursor()
     cursor.execute("SELECT * FROM widgets")
-    row_headers=[x[0] for x in cursor.description] #this will extract row headers
+    row_headers=[x[0] for x in cursor.description] 
     results = cursor.fetchall()
     json_data=[]
     for result in results:
