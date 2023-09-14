@@ -43,12 +43,12 @@ jobs:
           key: v1-{{ .Branch }}-{{ epoch }}
           paths:
             - /caches/app.tar
-      # - deploy:
-      #     name: Push application Docker image
-      #     command: |
-      #       if [ "${CIRCLE_BRANCH}" == "master" ]; then
-      #         login="$(docker login -u $username -p $password)"
-      #         ${login}
-      #         docker tag app "${ECR_ENDPOINT}/app:${CIRCLE_SHA1}"
-      #         docker push "${ECR_ENDPOINT}/app:${CIRCLE_SHA1}"
-      #       fi
+      - deploy:
+          name: Push application Docker image
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              login="$(docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASS)"
+              ${login}
+              docker tag app "${REGISTRY}/app:${CIRCLE_SHA1}"
+              docker push "${REGISTRY}/app:${CIRCLE_SHA1}"
+            fi
