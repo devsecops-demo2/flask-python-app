@@ -47,8 +47,7 @@ jobs:
           name: Push application Docker image
           command: |
             if [ "${CIRCLE_BRANCH}" == "main" ]; then
-              login="$(docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASS)"
-              ${login}
+              docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASS
               docker tag app "${REGISTRY}/app:${CIRCLE_SHA1}"
               docker push "${REGISTRY}/app:${CIRCLE_SHA1}"
             fi
