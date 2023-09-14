@@ -48,6 +48,6 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "main" ]; then
               docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASS
-              docker tag app "${REGISTRY}/app:${CIRCLE_SHA1}"
-              docker push "${REGISTRY}/app:${CIRCLE_SHA1}"
+              docker tag app "${REGISTRY}/rajshivage/flask-app:${CIRCLE_SHA1}"
+              docker push "${REGISTRY}/rajshivage/flask-app:${CIRCLE_SHA1}"
             fi
