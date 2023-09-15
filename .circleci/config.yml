@@ -61,6 +61,6 @@ workflows:
           type: approval
           requires:
             - build
-      - deploy
+      - deploy:
           requires:
             - Hold-for-Approval
