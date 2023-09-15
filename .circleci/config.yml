@@ -43,16 +43,16 @@ jobs:
           key: v1-{{ .Branch }}-{{ epoch }}
           paths:
             - /caches/app.tar
-deploy:
-  steps:
-    - deploy:
-        name: Push application Docker image
-        command: |
-          if [ "${CIRCLE_BRANCH}" == "main" ]; then
-            docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASS
-            docker tag app "${REGISTRY}/rajshivage/flask-app:${CIRCLE_SHA1}"
-            docker push "${REGISTRY}/rajshivage/flask-app:${CIRCLE_SHA1}"
-          fi
+  deploy:
+    steps:
+      - deploy:
+          name: Push application Docker image
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "main" ]; then
+              docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASS
+              docker tag app "${REGISTRY}/rajshivage/flask-app:${CIRCLE_SHA1}"
+              docker push "${REGISTRY}/rajshivage/flask-app:${CIRCLE_SHA1}"
+            fi
 workflows:
   Workflow:
     jobs:
