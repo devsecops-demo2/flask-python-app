@@ -45,7 +45,7 @@ jobs:
             - /caches/app.tar
   deploy:
     steps:
-      - deploy:
+      - run:
           name: Push application Docker image
           command: |
             if [ "${CIRCLE_BRANCH}" == "main" ]; then
