@@ -43,7 +43,12 @@ jobs:
           key: v1-{{ .Branch }}-{{ epoch }}
           paths:
             - /caches/app.tar
-      - deploy:
+  deploy:
+    docker:
+      - image: docker:17.05.0-ce-git
+    steps:
+      - setup_remote_docker
+      - run:
           name: Push application Docker image
           command: |
             if [ "${CIRCLE_BRANCH}" == "main" ]; then
@@ -51,3 +56,14 @@ jobs:
               docker tag app "${REGISTRY}/rajshivage/flask-app:${CIRCLE_SHA1}"
               docker push "${REGISTRY}/rajshivage/flask-app:${CIRCLE_SHA1}"
             fi
+workflows:
+  Workflow:
+    jobs:
+      - build
+      - Hold-for-Approval:
+          type: approval
+          requires:
+            - build
+      - deploy:
+          requires:
+            - Hold-for-Approval
