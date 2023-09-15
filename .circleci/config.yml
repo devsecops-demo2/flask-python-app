@@ -44,7 +44,10 @@ jobs:
           paths:
             - /caches/app.tar
   deploy:
+    docker:
+      - image: docker:17.05.0-ce-git
     steps:
+      - setup_remote_docker
       - run:
           name: Push application Docker image
           command: |
