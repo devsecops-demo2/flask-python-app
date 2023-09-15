@@ -56,7 +56,7 @@ deploy:
 workflows:
   Workflow:
     jobs:
-      - build:
+      - build
       - Hold-for-Approval:
           type: approval
           requires:
